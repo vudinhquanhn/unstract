@@ -6,7 +6,7 @@ services:
     # set shared memory limit when using docker-compose
     shm_size: 128mb
     ports:
-      - "5442:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
       - ./scripts/db-setup/db_setup.sh:/docker-entrypoint-initdb.d/db_setup.sh
@@ -22,7 +22,7 @@ services:
     # uncomment below command if persistance required.
     #command: redis-server --save 20 1 --loglevel warning --
     ports:
-      - "6389:6379"
+      - "6379:6379"
     volumes:
       - redis_data:/data
     labels:
@@ -34,8 +34,8 @@ services:
     hostname: minio
     restart: unless-stopped
     ports:
-      - "9010:9000"
-      - "9011:9001"
+      - "9000:9000"
+      - "9001:9001"
     volumes:
       - minio_data:/data
     env_file:
@@ -78,9 +78,9 @@ services:
       --providers.file.filename=/proxy_overrides.yaml --providers.file.watch=true
     ports:
       # The HTTP port
-      - "90:80"
+      - "80:80"
       # The Web UI (enabled by --api.insecure=true)
-      - "8090:8080"
+      - "8080:8080"
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
@@ -126,7 +126,7 @@ services:
     container_name: unstract-vector-db
     restart: unless-stopped
     ports:
-      - "6343:6333"
+      - "6333:6333"
     volumes:
       - qdrant_data:/var/lib/qdrant/data/
     labels:

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -o nounset # exit if a variable is not set
 set -o errexit # exit for any command failure"
 
